@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
-    <router-view/>
+    <v-app>
+      <toolbar/>
+      <main>
+          <router-view></router-view>
+      </main>
+    </v-app>
   </div>
 </template>
 
 <script>
+import toolbar from '@/components/Toolbar.vue'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    toolbar
+  }
 }
 </script>
 
