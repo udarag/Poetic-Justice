@@ -30,7 +30,7 @@ module.exports = {
       const { email, password } = req.body
       const currUser = await user.findOne({
         where: {
-          email: email
+          email: email.toLowerCase()
         }
       })
       if (!currUser) {

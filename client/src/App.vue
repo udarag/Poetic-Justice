@@ -1,9 +1,11 @@
 <template>
   <div id="app">
-    <v-app>
+    <v-app :dark="true">
       <toolbar/>
       <main>
+        <v-container fluid>
           <router-view></router-view>
+        </v-container>
       </main>
     </v-app>
   </div>
@@ -26,6 +28,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

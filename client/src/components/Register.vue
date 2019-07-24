@@ -1,5 +1,4 @@
 <template>
-  <v-app id="register" :dark="true">
     <v-content>
       <v-container fluid fill-height>
         <v-layout align-center justify-center>
@@ -28,7 +27,6 @@
         </v-layout>
       </v-container>
     </v-content>
-  </v-app>
 </template>
 
 <!--<template>
@@ -63,6 +61,9 @@ export default {
         })
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.user)
+        this.$router.push({
+          name: 'home'
+        })
       } catch (error) {
         this.error = error.response.data.error
       }
