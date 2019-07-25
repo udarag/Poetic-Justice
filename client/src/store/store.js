@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     token: null,
     user: null,
-    loggedIn: false
+    loggedIn: false,
+    poems: []
   },
   mutations: {
     setToken (state, token) {
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     setUser (state, user) {
       state.user = user
+    },
+    setPoems (state, words) {
+      state.poems = words
     }
   },
   actions: {
@@ -30,6 +34,9 @@ export default new Vuex.Store({
     setUser ({commit}, user) {
       console.log(user)
       commit('setUser', user)
+    },
+    setPoems ({commit}, words) {
+      commit('setPoems', words)
     }
   }
 })

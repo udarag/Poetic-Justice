@@ -12,7 +12,7 @@
     </v-toolbar-title>
     <v-toolbar-items>
       <v-btn flat dark v-if="$store.state.loggedIn"
-        @click="navigateTo({name: 'browse'})">
+        @click="handler()">
         Browse
       </v-btn>
     </v-toolbar-items>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import auth from '@/services/auth'
+
 export default {
   methods: {
     navigateTo (route) {
@@ -42,6 +44,21 @@ export default {
       this.$router.push({
         name: 'welcome'
       })
+    },
+    async getWords () {
+      try {
+        const response = await auth.getPoems()
+        this.$store.dispatch('setPoems', response)
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    },
+    handler: function () {
+      this.getWords()
+      this.navigateTo({name: 'browse'})
+    },
+    poemGenerator (words) {
+
     }
   }
 }

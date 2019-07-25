@@ -9,5 +9,8 @@ export default {
   },
   poem (words) {
     return api().post('poem', words)
+  },
+  getPoems () {
+    return api().get('getPoems')
   }
 }
