@@ -48,6 +48,8 @@ sequelize.sync({force: true})
 
 I didnt get a chance to implement a cookie function to save state so by default if you refresh the page you will get a blank component wrapped by the toolbar. Just click "log in" or "poetic justice" to get back to the splash screen. You will have to relog in. 
 
+If you arent seeing your newly submitted poem in the browse page, just cycle back to "Create Poem" and then back to "Browse" it should show up at the bottom. This happens because the call to the database isnt quick enough which means the state hasnt loaded just yet. The component takes a couple seconds to be up to date. 
+
 ## Authors
 
 Udara Gunawardena
