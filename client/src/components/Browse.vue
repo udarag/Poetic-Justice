@@ -1,6 +1,6 @@
 <template>
-<div id="app">
-  <v-layout v-if="poems" row wrap align-content-center>
+<div id="app" v-if="poems">
+  <v-layout row wrap align-content-center>
     <v-flex md4 class="rows" v-for="(poems, i) in poems" :key="i.name">
            <v-card height="100%">
              <v-card-title primary class="title">{{generateName(i)}}</v-card-title>

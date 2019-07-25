@@ -56,9 +56,6 @@ export default {
     handler: function () {
       this.getWords()
       this.navigateTo({name: 'browse'})
-    },
-    poemGenerator (words) {
-
     }
   }
 }

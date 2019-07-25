@@ -20,7 +20,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn @click="navigateTo({name: 'register'})" color=#ff1744>Sign Up</v-btn>
-                <v-btn @click="login" color=#ff1744>Log In</v-btn>
+                <v-btn @click="handler()" color=#ff1744>Log In</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -40,6 +40,14 @@ export default {
     }
   },
   methods: {
+    async getWords () {
+      try {
+        const response = await auth.getPoems()
+        this.$store.dispatch('setPoems', response)
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    },
     async login () {
       try {
         const response = await auth.login({
@@ -57,6 +65,10 @@ export default {
     },
     navigateTo (route) {
       this.$router.push(route)
+    },
+    handler: function () {
+      this.getWords()
+      this.login()
     }
   }
 }
