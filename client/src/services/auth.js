@@ -6,5 +6,8 @@ export default {
   },
   login (credentials) {
     return api().post('login', credentials)
+  },
+  poem (words) {
+    return api().post('poem', words)
   }
 }
