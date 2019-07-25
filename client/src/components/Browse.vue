@@ -3,41 +3,20 @@
   <v-layout row wrap align-content-center>
     <v-flex md4 class="rows" v-for="(poems, i) in poems" :key="i.name">
            <v-card height="100%">
-             <v-card-title primary class="title">{{generateName(i)}}</v-card-title>
-             <v-card-text>
-              <span>{{generateUser(i)}}</span><br>
-              <span>
-                <span>{{generatePoem(i)}}</span>
-              </span>
+            <v-card-text>
+             <p class="display-1 text--primary">
+                {{generateName(i)}}
+              </p>
+             <!-- <v-card-title primary class="title">{{generateName(i)}}</v-card-title> -->
+             <p>Poet: {{generateUser(i)}}</p>
+             <div class="poem">
+                {{generatePoem(i)}}<br>
+                {{generatePoem2(i)}}<br>
+                {{generatePoem3(i)}}
+              </div>
             </v-card-text>
           </v-card>
        </v-flex>
-    <!-- <v-flex md4 class="rows">
-      <v-card height="100%">
-        <v-card-title primary class="title">Lorem</v-card-title>
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet risus eget massa porttitor scelerisque in vitae dolor. Pellentesque finibus fermentum nunc, vitae facilisis erat rutrum eu. Nam sollicitudin hendrerit vehicula. Ut eleifend ornare augue, ac vehicula ligula aliquet vitae. Cras imperdiet quam ligula, non pharetra lacus aliquam sed. Nam eget ante sit amet diam sodales maximus vel et turpis. Sed dui tellus, pulvinar aliquam viverra nec, suscipit quis nulla. Praesent lacinia ut tortor at feugiat. Etiam tristique, diam eget viverra hendrerit, nibh quam commodo mi, a mollis dolor lacus vitae nunc. Quisque maximus posuere scelerisque. Duis pretium nunc a sem efficitur ultrices. Mauris lacinia metus ac urna consequat fermentum.</v-card-text>
-      </v-card>
-    </v-flex>
-    <v-flex md4 class="rows">
-      <v-card height="100%">
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-text>
-      </v-card>
-    </v-flex>
-    <v-flex md4 class="rows">
-      <v-card height="100%">
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet risus eget massa porttitor scelerisque in vitae dolor. Pellentesque finibus fermentum nunc, vitae facilisis erat rutrum eu.</v-card-text>
-      </v-card>
-    </v-flex>
-    <v-flex md4 class="rows">
-      <v-card height="100%">
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet risus eget massa porttitor scelerisque in vitae dolor. Pellentesque finibus fermentum nunc, vitae facilisis erat rutrum eu. Nam sollicitudin hendrerit vehicula. Ut eleifend ornare augue, ac vehicula ligula aliquet vitae. Cras imperdiet quam ligula, non pharetra lacus aliquam sed. Nam eget ante sit amet diam sodales maximus vel et turpis. Sed dui tellus, pulvinar aliquam viverra nec, suscipit quis nulla. Praesent lacinia ut tortor at feugiat. Etiam tristique, diam eget viverra hendrerit, nibh quam commodo mi, a mollis dolor lacus vitae nunc. Quisque maximus posuere scelerisque. Duis pretium nunc a sem efficitur ultrices. Mauris lacinia metus ac urna consequat fermentum.</v-card-text>
-      </v-card>
-    </v-flex>
-    <v-flex md4 class="rows">
-      <v-card height="100%">
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</v-card-text>
-      </v-card>
-    </v-flex> -->
   </v-layout>
 </div>
 </template>
@@ -68,8 +47,16 @@ export default {
       return user
     },
     generatePoem (index) {
-      var poem = this.poems[index].preposition1 + ' ' + this.poems[index].adverb1 + ' ' + this.poems[index].verb1 + ' ' + this.poems[index].adjective1 + ' ' + this.poems[index].noun1
-      return poem
+      var poem1 = this.poems[index].preposition1 + ' ' + this.poems[index].adverb1 + ' ' + this.poems[index].verb1 + ' ' + this.poems[index].adjective1 + ' ' + this.poems[index].noun1
+      return (poem1)
+    },
+    generatePoem2 (index) {
+      var poem2 = this.poems[index].preposition2 + ' ' + this.poems[index].adverb2 + ' ' + this.poems[index].verb2 + ' ' + this.poems[index].adjective2 + ' ' + this.poems[index].noun2
+      return (poem2)
+    },
+    generatePoem3 (index) {
+      var poem3 = this.poems[index].preposition3 + ' ' + this.poems[index].adverb3 + ' ' + this.poems[index].verb3 + ' ' + this.poems[index].adjective3 + ' ' + this.poems[index].noun3
+      return (poem3)
     }
   },
   watch: {
@@ -93,5 +80,12 @@ export default {
 }
 .loading {
   color:white;
+}
+.poem {
+  font-style: italic;
+}
+p {
+  font-weight: bold;
+  font-size: 10px;
 }
 </style>

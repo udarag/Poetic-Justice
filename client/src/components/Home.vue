@@ -3,12 +3,13 @@
     <h1>{{ msg }}</h1>
     <v-layout justify-center>
     <v-flex xs12 sm10 md8 lg6>
-      <v-card ref="form">
+      <v-form ref="form" v-model="valid">
+      <v-card>
         <v-card-text>
           <v-text-field
             ref="name"
             v-model="name"
-            :rules="[() => !!name || 'This field is required']"
+            :rules="nameRules"
             label="Name your poem"
             placeholder="Poetic Justice"
             required
@@ -20,14 +21,16 @@
                   placeholder="Noun"
                   outlined = "true"
                   v-model="noun1"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="noun2"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Noun"
                   required
                 ></v-text-field>
@@ -35,7 +38,8 @@
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="noun3"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Noun"
                   required
                 ></v-text-field>
@@ -48,14 +52,16 @@
                   placeholder="Adjective"
                   outlined = "true"
                   v-model="adjective1"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="adjective2"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Adjective"
                   required
                 ></v-text-field>
@@ -63,7 +69,8 @@
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="adjective3"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Adjective"
                   required
                 ></v-text-field>
@@ -76,14 +83,16 @@
                   placeholder="Adverb"
                   outlined = "true"
                   v-model="adverb1"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="adverb2"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Adverb"
                   required
                 ></v-text-field>
@@ -91,7 +100,8 @@
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="adverb3"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Adverb"
                   required
                 ></v-text-field>
@@ -104,14 +114,16 @@
                   placeholder="Preposition"
                   outlined = "true"
                   v-model="preposition1"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="preposition2"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Preposition"
                   required
                 ></v-text-field>
@@ -119,7 +131,8 @@
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="preposition3"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Preposition"
                   required
                 ></v-text-field>
@@ -132,14 +145,16 @@
                   placeholder="Verb"
                   outlined = "true"
                   v-model="verb1"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   required
                 ></v-text-field>
               </v-flex>
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="verb2"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Verb"
                   required
                 ></v-text-field>
@@ -147,7 +162,8 @@
               <v-flex xs12 md4>
                 <v-text-field
                   v-model="verb3"
-                  :counter="10"
+                  :rules="wordRules"
+                  :counter="14"
                   label="Verb"
                   required
                 ></v-text-field>
@@ -160,6 +176,7 @@
           <v-btn color="primary" text @click="submit">Submit</v-btn>
         </v-card-actions>
       </v-card>
+      </v-form>
     </v-flex>
   </v-layout>
   </div>
@@ -171,6 +188,16 @@ export default {
   name: 'Home',
   data () {
     return {
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => v.length <= 20 || 'Name must be less than 20 characters'
+      ],
+      wordRules: [
+        v => !!v || 'Word is required',
+        v => v.length <= 14 || 'Word must be less than 14 characters',
+        (v) => /^[a-zA-Z]+$/.test(v) || 'Please enter a valid word'
+      ],
+      valid: false,
       msg: 'Create your poem',
       name: '',
       noun1: '',
@@ -192,32 +219,34 @@ export default {
   },
   methods: {
     async submit () {
-      try {
-        const response = await auth.poem({
-          name: this.name,
-          email: this.$store.state.user.email,
-          noun1: this.noun1,
-          noun2: this.noun2,
-          noun3: this.noun3,
-          adjective1: this.adjective1,
-          adjective2: this.adjective2,
-          adjective3: this.adjective3,
-          adverb1: this.adverb1,
-          adverb2: this.adverb2,
-          adverb3: this.adverb3,
-          preposition1: this.preposition1,
-          preposition2: this.preposition2,
-          preposition3: this.preposition3,
-          verb1: this.verb1,
-          verb2: this.verb2,
-          verb3: this.verb3
-        })
-        console.log(response)
-        this.$router.push({
-          name: 'browse'
-        })
-      } catch (error) {
-        this.error = error.response.data.error
+      if (this.$refs.form.validate()) {
+        try {
+          const response = await auth.poem({
+            name: this.name,
+            email: this.$store.state.user.email,
+            noun1: this.noun1,
+            noun2: this.noun2,
+            noun3: this.noun3,
+            adjective1: this.adjective1,
+            adjective2: this.adjective2,
+            adjective3: this.adjective3,
+            adverb1: this.adverb1,
+            adverb2: this.adverb2,
+            adverb3: this.adverb3,
+            preposition1: this.preposition1,
+            preposition2: this.preposition2,
+            preposition3: this.preposition3,
+            verb1: this.verb1,
+            verb2: this.verb2,
+            verb3: this.verb3
+          })
+          console.log(response)
+          this.$router.push({
+            name: 'browse'
+          })
+        } catch (error) {
+          this.error = error.response.data.error
+        }
       }
     },
     navigateTo (route) {
@@ -239,7 +268,7 @@ ul {
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 14px;
 }
 a {
   color: white;

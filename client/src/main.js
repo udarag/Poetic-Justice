@@ -4,13 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
+import Vuelidate from 'vuelidate'
 import { sync } from 'vuex-router-sync'
 import store from '@/store/store'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.config.productionTip = false
-Vue.use(Vuetify)
+Vue.use(Vuetify, Vuelidate)
 sync(store, router)
 
 /* eslint-disable no-new */

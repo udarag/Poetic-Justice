@@ -34,6 +34,10 @@ export default new Router({
       path: '/browse',
       name: 'browse',
       component: Browse
+    },
+    {
+      path: '*',
+      redirect: '/welcome'
     }
   ]
 })
