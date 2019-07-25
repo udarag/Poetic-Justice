@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar color=#ff1744>
+  <v-toolbar color=#42b883>
     <v-toolbar-title class ="mr-4">
       <v-btn flat dark v-if="!$store.state.loggedIn"
         @click="navigateTo({name: 'welcome'})">
@@ -7,7 +7,7 @@
       </v-btn>
       <v-btn flat dark v-if="$store.state.loggedIn"
         @click="navigateTo({name: 'home'})">
-        Poetic Justice
+        Create Poem
       </v-btn>
     </v-toolbar-title>
     <v-toolbar-items>

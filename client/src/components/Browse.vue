@@ -1,5 +1,5 @@
 <template>
-<div id="app" v-if="poems">
+<div id="app" v-if= "$store.state.loggedIn">
   <v-layout row wrap align-content-center>
     <v-flex md4 class="rows" v-for="(poems, i) in poems" :key="i.name">
            <v-card height="100%">

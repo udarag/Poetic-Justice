@@ -4,7 +4,7 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card fixed class="elevation-12">
-              <v-toolbar dark color=#ff1744>
+              <v-toolbar dark color=#42b883>
                 <v-toolbar-title>Welcome Back!</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
@@ -19,8 +19,8 @@
                 </v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="navigateTo({name: 'register'})" color=#ff1744>Sign Up</v-btn>
-                <v-btn @click="handler()" color=#ff1744>Log In</v-btn>
+                <v-btn @click="navigateTo({name: 'register'})" color=#42b883>Sign Up</v-btn>
+                <v-btn @click="handler()" color=#42b883>Log In</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>

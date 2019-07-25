@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello" v-if= "$store.state.loggedIn">
     <h1>{{ msg }}</h1>
     <v-layout justify-center>
     <v-flex xs12 sm10 md8 lg6>
