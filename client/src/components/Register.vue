@@ -19,7 +19,7 @@
                 </v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn @click="register" color=#ff1744>Register</v-btn>
+                <v-btn @click="handler()" color=#ff1744>Register</v-btn>
               </v-card-actions>
             </v-card>
           </v-flex>
@@ -52,6 +52,14 @@ export default {
     }
   },
   methods: {
+    async getWords () {
+      try {
+        const response = await auth.getPoems()
+        this.$store.dispatch('setPoems', response)
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    },
     async register () {
       try {
         const response = await auth.register({
@@ -66,6 +74,10 @@ export default {
       } catch (error) {
         this.error = error.response.data.error
       }
+    },
+    handler: function () {
+      this.getWords()
+      this.register()
     }
   }
 }
