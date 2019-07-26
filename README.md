@@ -10,7 +10,7 @@ This web app is built using Vue.js (Framework), Vuex (State management), Node (B
 
 Vue.js: I was going to build the app in React (fully experienced in), however I know GSVLabs uses Vue.js primarily at the moment thus I took some time to learn the ropes of the language. With more time, would have learned the transitions library to make the app a little more fluid and clean.
 
-Vuex: Unfortunately (for me) I missunderstood the instructions intially which resulted in me thinking that I had to build out authentication server side to allow users to log in and create their own poems. After rereading the instructions I realized that wasnt neccessary. I had already built out the auth system so I ended up using vuex to manage the state of who is logged in. If you guys required it I would have used the state to then have the user be able to view only the poems the created.
+Vuex: Unfortunately (for me) I missunderstood the instructions intially which resulted in me thinking that I had to build out authentication server side to allow users to log in and create their own poems. After rereading the instructions I realized that wasnt neccessary. I had already built out the auth system so I ended up using vuex to manage the state of who is logged in. If it was required, I would have used the state to then have the user be able to view only the poems the created.
 
 Sqlite: Ended up going for Sqlite because while it isnt as fully featured as something like postgres; it is perfect for a small application like this where you guys will need to host it locally. Sqlite allows the server to generate its own table for an easier localhost situation
 
