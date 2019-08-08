@@ -1,6 +1,6 @@
 # Poetic Justice
 
-An web app built for GSVLabs that is made to generate poems given a users input
+An web app built to generate poems given a users input
 
 ## Description
 
